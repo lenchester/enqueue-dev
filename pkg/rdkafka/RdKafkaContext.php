@@ -180,8 +180,7 @@ class RdKafkaContext implements Context
     }
 
     /**
-     * @return void
-     *              JsonSerializer should be the default fallback if no serializer is specified
+     * JsonSerializer should be the default fallback if no serializer is specified.
      */
     private function configureSerializer(array $config): void
     {

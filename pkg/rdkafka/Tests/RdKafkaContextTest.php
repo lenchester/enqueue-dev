@@ -54,6 +54,17 @@ class RdKafkaContextTest extends TestCase
         $this->assertInstanceOf(JsonSerializer::class, $context->getSerializer());
     }
 
+    public function testShouldPreserveSameSerializerInstanceWhenObjectIsPassed()
+    {
+        $serializer = $this->createMock(Serializer::class);
+
+        $context = new RdKafkaContext([
+            'serializer' => $serializer,
+        ]);
+
+        $this->assertSame($serializer, $context->getSerializer());
+    }
+
     public function testShouldThrowExceptionOnInvalidSerializerConfig()
     {
         $this->expectException(\InvalidArgumentException::class);
